@@ -1,5 +1,7 @@
 import { createStore } from "redux";
 
+// Create your action creators here.
+
 const initialState = 0;
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,17 +15,14 @@ const countReducer = (state = initialState, action) => {
 };
 
 const store = createStore(countReducer);
+const increment = () => {
+  return { type: "increment" };
+};
+const decrement = () => {
+  return { type: "decrement" };
+};
 
-store.dispatch({ type: "increment" });
-console.log(store.getState());
-store.dispatch({ type: "increment" });
-console.log(store.getState());
-
-store.dispatch({ type: "decrement" });
-console.log(store.getState());
-
-store.dispatch({ type: "decrement" });
-console.log(store.getState());
-
-store.dispatch({ type: "decrement" });
+// Modify the dispatches below.
+store.dispatch(increment());
+store.dispatch(decrement());
 console.log(store.getState());
