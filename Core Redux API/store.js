@@ -3,6 +3,7 @@ import { createStore } from "redux";
 // Create your action creators here.
 
 const initialState = 0;
+
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
     case "increment":
@@ -21,6 +22,15 @@ const increment = () => {
 const decrement = () => {
   return { type: "decrement" };
 };
+
+const printCountStatus = () => {
+  return console.log(`The count is ${store.getState()}`);
+};
+
+store.subscribe(printCountStatus);
+
+//store.subscribe() returns an unsubscribe function.
+const unsubscribe = store.subscribe(printCountStatus);
 
 // Modify the dispatches below.
 store.dispatch(increment());
